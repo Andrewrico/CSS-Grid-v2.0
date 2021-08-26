@@ -1,7 +1,5 @@
-.grid__title {
-	text-align: center;
-}
 
+/* Breakpoint Mobile */
 .grid__wrapper {
 	display: -ms-grid;
 	display: grid;
@@ -10,24 +8,32 @@
 	grid-gap: var(--gap, 1rem);
 	max-width: var(--max-width, 1366px);
 	width: var(--width, 100%);
-	list-style: none;
+	grid-template-columns: var(--column-mobile, var(--column-count));
 	--width: 100%;
 	--gutter: 0.5em;
 	--grid-sidebar: 300px;
-}
-
-.grid__wrapper {
 	--column-mobile: 1fr;
-	grid-template-columns: var(--column-mobile, var(--column-count));
 }
 
-.grid__wrapper+.grid__wrapper {
+.grid__wrapper + .grid__wrapper {
 	padding-top: var(--gap);
 }
 
+.grid__section {
+	--background: transparent;
+	background: var(--background);
+	padding: var(--padding) 0;
+}
+
+.grid__title {
+	--text-align: center;
+	text-align: var(--text-align);
+}
+
 .grid__row {
+	--padding-bottom: 2;
 	grid-column: 1 / -1;
-	padding-bottom: calc(var(--gap) * 2);
+	padding-bottom: calc(var(--gap) * var(--padding-bottom));
 }
 
 .grid__column {
@@ -43,57 +49,52 @@
 	margin: 0;
 }
 
-@media only screen and (max-width: 768px) {
 
+
+/* Switches columns on mobile if media in on the right */
+@media only screen and (max-width: 768px) {
 	.grid__column {
 		--first-order: unset;
 		order: var(--first-order);
 	}
 }
 
-@media only screen and (max-width: 768px) {
-
-	.grid__column {
-		--first-order: unset;
-		order: var(--first-order);
-	}
-
-}
-
-
-/* Small screens display a padding left and right in each column  */
+/* add padding to columns  */
 @media only screen and (max-width: 1268px) {
 	.grid__column {
-		padding: 0 2rem;
+		--left-right: 2rem;
+		padding: 0 var(--left-right );
 	}
 }
 
+/* Breakpoint S */
 @media only screen and (min-width: 768px) {
+	/* sidebar. use left */
 	.grid__wrapper.sidebar {
 		grid-template-columns: var(--grid-sidebar) 1fr !important;
 	}
-
+	/* sidebar. use right*/
 	.grid__wrapper.sidebar__right {
 		grid-template-columns: 1fr var(--grid-sidebar) !important;
 	}
 }
 
+/* Breakpoint Table */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-
 	.grid__wrapper {
 		grid-template-columns: var(--column-table, var(--column-count));
 	}
 }
 
+/* Breakpoint Laptop */
 @media only screen and (min-width: 1024px) and (max-width: 1268px) {
-
 	.grid__wrapper {
 		grid-template-columns: var(--column-laptop, var(--column-count, var(--column-table)));
 	}
 }
 
+/* Breakpoint Desktop */
 @media only screen and (min-width: 1268px) {
-
 	.grid__wrapper {
 		grid-template-columns: var(--column-desktop, var(--column-count, var(--column-laptop, var(--column-table))));
 	}
