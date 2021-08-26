@@ -7,9 +7,9 @@
 	display: grid;
 	margin: 0 auto;
 	padding: 0;
-	grid-gap: var(--gap);
-	max-width: var(--max-width);
-	width: var(--width);
+	grid-gap: var(--gap, 1rem);
+	max-width: var(--max-width, 1366px);
+	width: var(--width, 100%);
 	list-style: none;
 	--width: 100%;
 	--gutter: 0.5em;
@@ -43,37 +43,11 @@
 	margin: 0;
 }
 
-.grid__cell {
-	--flow: column nowrap;
-	--direction: column;
-	--margin-top: 0;
-
-	--align-items: unset;
-	--justify-content: unset;
-	--gap: unset;
-	--justify: unset;
-	display: flex;
-	align-items: var(--align-items);
-	justify-content: var(--justify-content);
-	gap: var(--gap);
-	text-align: var(--justify);
-	flex-direction: var(--direction);
-	flex-flow: var(--flow);
-	padding: var(--gutter);
-	margin-top: var(--margin-top, 0);
-	height: 100%;
-}
-
 @media only screen and (max-width: 768px) {
 
 	.grid__column {
 		--first-order: unset;
 		order: var(--first-order);
-	}
-
-	.grid__cell {
-		--cell-mobile: 100%;
-		width: var(--cell-mobile, 100%);
 	}
 }
 
@@ -84,21 +58,17 @@
 		order: var(--first-order);
 	}
 
-	.grid__cell {
-		--cell-mobile: 100%;
-		width: var(--cell-mobile, 100%);
-	}
 }
 
+
+/* Small screens display a padding left and right in each column  */
 @media only screen and (max-width: 1268px) {
-
 	.grid__column {
 		padding: 0 2rem;
 	}
 }
 
 @media only screen and (min-width: 768px) {
-
 	.grid__wrapper.sidebar {
 		grid-template-columns: var(--grid-sidebar) 1fr !important;
 	}
@@ -113,11 +83,6 @@
 	.grid__wrapper {
 		grid-template-columns: var(--column-table, var(--column-count));
 	}
-
-	.grid__cell {
-		--cell-table: 100%;
-		width: var(--cell-table, var(--cell-mobile, 100%));
-	}
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1268px) {
@@ -125,21 +90,11 @@
 	.grid__wrapper {
 		grid-template-columns: var(--column-laptop, var(--column-count, var(--column-table)));
 	}
-
-	.grid__cell {
-		--cell-laptop: 100%;
-		width: var(--cell-laptop, var(--cell-table, var(--cell-mobile)));
-	}
 }
 
 @media only screen and (min-width: 1268px) {
 
 	.grid__wrapper {
 		grid-template-columns: var(--column-desktop, var(--column-count, var(--column-laptop, var(--column-table))));
-	}
-
-	.grid__cell {
-		--cell-desktop: 100%;
-		width: var(--cell-desktop, var(--cell-laptop, var(--cell-table, var(--cell-mobile))));
 	}
 }

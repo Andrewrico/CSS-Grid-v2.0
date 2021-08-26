@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSSGRID Props</title>
+    <title>CSS GRID Props</title>
+    <link rel="stylesheet" href="CSSGRID-Props.css">
 </head>
 <body>
-    <section class="grid__section" style="--background: white; --padding: 1rem 0;">
+    <section class="grid__section" style="--background: white; --padding: 4rem 0;">
         <div class="grid__title">
             <h2>
                 The Title goes here, and section has 4 columns.
             </h2>
         </div>
-        <div class="grid__wrapper">
+        <div class="grid__wrapper" style="--column-count: repeat(4, 1fr);">
             <div class="grid__column">column 1</div>
             <div class="grid__column">column 2</div>
             <div class="grid__column">column 3</div>
