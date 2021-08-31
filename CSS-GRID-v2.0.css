@@ -1,3 +1,13 @@
+.grid__section {
+	--background: transparent;
+	background: var(--background);
+	padding: var(--padding) 0;
+}
+
+.grid__title {
+	--text-align: center;
+	text-align: var(--text-align);
+}
 
 /* Breakpoint Mobile */
 .grid__wrapper {
@@ -19,17 +29,6 @@
 	padding-top: var(--gap);
 }
 
-.grid__section {
-	--background: transparent;
-	background: var(--background);
-	padding: var(--padding) 0;
-}
-
-.grid__title {
-	--text-align: center;
-	text-align: var(--text-align);
-}
-
 .grid__row {
 	--padding-bottom: 2;
 	grid-column: 1 / -1;
@@ -49,32 +48,30 @@
 	margin: 0;
 }
 
-
-
-/* Switches columns on mobile if media in on the right */
+/* switches columns on mobile if media is on the right */
 @media only screen and (max-width: 768px) {
 	.grid__column {
-		--first-order: unset;
-		order: var(--first-order);
+		--mobile-media-first: unset;
+		order: var(--mobile-media-first);
 	}
 }
 
 /* add padding to columns  */
 @media only screen and (max-width: 1268px) {
 	.grid__column {
-		--left-right: 2rem;
-		padding: 0 var(--left-right );
+		--padding-left-right: 2rem;
+		padding: 0 var(--padding-left-right );
 	}
 }
 
-/* Breakpoint S */
+/* Sidebar */
 @media only screen and (min-width: 768px) {
-	/* sidebar. use left */
-	.grid__wrapper.sidebar {
+	/* use left */
+	.grid__wrapper.grid__sidebar-left {
 		grid-template-columns: var(--grid-sidebar) 1fr !important;
 	}
-	/* sidebar. use right*/
-	.grid__wrapper.sidebar__right {
+	/* use right */
+	.grid__wrapper.grid__sidebar-right {
 		grid-template-columns: 1fr var(--grid-sidebar) !important;
 	}
 }
